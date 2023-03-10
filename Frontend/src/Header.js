@@ -137,7 +137,7 @@ export default function Header() {
 			<div className="w3l_logo">
 				<h1><a href="#">Dairy Delight<span>Your stores. Your place.</span></a></h1>
 			</div>
-			<div className="search">
+			{/* <div className="search">
 				<input className="search_box" type="checkbox" id="search_box"/>
 				<label onClick={()=>setShowCartPopup(true)} className="icon-search" ><span className="glyphicon glyphicon-search" aria-hidden="true"></span></label>
 				<div className="search_form">
@@ -146,7 +146,7 @@ export default function Header() {
 						<input type="submit" value="Send"/>
 					</form>
 				</div>
-			</div>
+			</div> */}
 			
 			
 

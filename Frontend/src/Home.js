@@ -264,7 +264,7 @@ function Home() {
 		<div className="container">
 			<div className="col-md-6 w3agile_newsletter_left">
 				<h3>Newsletter</h3>
-				<p>Excepteur sint occaecat cupidatat non proident, sunt.</p>
+				<p>Subscribe for latest dairy product information</p>
 			</div>
 			<div className="col-md-6 w3agile_newsletter_right">
 				<form action="#" method="post">

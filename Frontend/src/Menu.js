@@ -23,12 +23,13 @@ function Menu() {
 							<a href="#" className="dropdown-toggle" data-toggle="dropdown">Products <b className="caret"></b></a>
 						</li>
 						<li><a href="about.html">About Us</a></li> 
-						<li className="w3pages"><a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span className="caret"></span></a>
+						{/* <li className="w3pages">
+							<a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span className="caret"></span></a>
 							<ul className="dropdown-menu">
 								<li><a href="icons.html">Web Icons</a></li>
 								<li><a href="codes.html">Short Codes</a></li>     
 							</ul>
-						</li>  
+						</li>   */}
 						<li><a href="mail.html">Mail Us</a></li>
 					</ul>
 				</div>

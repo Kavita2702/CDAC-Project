@@ -8,7 +8,7 @@ function Footer() {
         <div className="w3_footer_grids">
             <div className="col-md-3 w3_footer_grid">
                 <h3>Contact</h3>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+                <p>Please reach out to our headquater for more information. </p>
                 <ul className="address">
                     <li><i className="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
                     <li><i className="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
@@ -28,11 +28,11 @@ function Footer() {
             <div className="col-md-3 w3_footer_grid">
                 <h3>Category</h3>
                 <ul className="info"> 
-                    <li><a href="products.html">Mobiles</a></li>
-                    <li><a href="products1.html">Laptops</a></li>
-                    <li><a href="products.html">Purifiers</a></li>
-                    <li><a href="products1.html">Wearables</a></li>
-                    <li><a href="products2.html">Kitchen</a></li>
+                    <li><a href="products.html">Milk</a></li>
+                    <li><a href="products1.html">Curd</a></li>
+                    <li><a href="products.html">Ghee</a></li>
+                    <li><a href="products1.html">Sweets</a></li>
+                    <li><a href="products2.html">Ice Cream</a></li>
                 </ul>
             </div>
             <div className="col-md-3 w3_footer_grid">
