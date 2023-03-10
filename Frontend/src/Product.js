@@ -124,11 +124,7 @@ export default function Product() {
 				</div>
 				<div class="description">
 					<h5><i>Description</i></h5>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-						eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-						Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut 
-						odit aut fugit, sed quia consequuntur magni dolores eos qui 
-						ratione voluptatem sequi nesciunt.</p>
+					<p>{product.desc}</p>
 				</div>
 			
 				

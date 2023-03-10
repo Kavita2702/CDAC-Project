@@ -13,7 +13,7 @@ public class Products {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
-	String name,price,added_on,category_id, img;
+	String name,price,added_on,category_id, img,desc;
 	public long getId() {
 		return id;
 	}
@@ -50,6 +50,11 @@ public class Products {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
 	
 }
