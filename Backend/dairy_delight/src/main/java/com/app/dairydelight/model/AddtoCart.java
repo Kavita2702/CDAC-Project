@@ -3,6 +3,8 @@ package com.app.dairydelight.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -17,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "add_to_cart")
 public class AddtoCart {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
 	@JsonIgnore
 	

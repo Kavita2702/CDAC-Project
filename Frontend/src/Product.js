@@ -2,9 +2,90 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Menu from './Menu';
-import {httpPost,httpPostwithToken} from './HttpConfig';
+import {httpPost,httpPostwithToken,httpGet} from './HttpConfig';
+import { useParams } from "react-router-dom";
+import {CartContextValue} from './ContextProvider';
+
+
 
 export default function Product() {
+	const params = useParams();
+	const [product,setProduct] = useState([]);
+	const [cartData,dispatch] = CartContextValue()
+	
+	const getProductsById = (id)=>{
+		
+		httpGet("product/getProductsById/",id)
+		.then((res)=>{
+			res.json().then(response=>{
+				
+				if(res.ok){
+					if(id == response.id){
+						setProduct(response)
+					}else{
+						alert("1No product found..");	
+					}
+				}else{
+					setProduct([])
+					alert("No product found..");
+				}
+			})
+		},error=>{
+			alert(error.message);
+		}
+		)
+	}
+	
+	useEffect(()=>{
+		getProductsById(params.id);
+	},[])
+
+	const getCartApi = ()=>{		
+		httpPostwithToken("addtocart/getCartsByUserId",{})
+		.then((res)=>{				
+			res.json() .then(data=>{
+				if(res.ok){
+					dispatch({
+						"type":"add_cart",
+						"data":data
+					})
+					//alert("Successfully added..")
+				}else{
+					alert(data.message)
+				}
+			})
+		},error=>{
+			alert(error.message);
+		}
+		)
+	}
+	const addCartApi=(productObj)=>{
+		let obj = {
+			"productId":productObj.id,			
+			"qty":"1",
+			"price":productObj.price
+			
+		}
+		httpPostwithToken("addtocart/addProduct",obj)
+		.then((res)=>{		
+			res.json() .then(data=>{
+				if(res.ok){
+					dispatch({
+						"type":"add_cart",
+						"data":data
+					})
+					alert("Successfully added..")
+				}else{
+					alert(data.message)
+				}
+			})     
+		}).catch(function(res){
+			console.log("Error ",res);
+			//alert(error.message);
+		}
+		)
+	}
+	
     return (
         <div class="single">
 		<div class="container">
@@ -12,7 +93,7 @@ export default function Product() {
 				<div class="flexslider">
 					<ul class="slides">
 						<li data-thumb="images/a.jpg">
-							<div class="thumb-image"> <img src="../assets/images/a.jpg" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+							<div class="thumb-image"> <img src={"../assets/images/"+product.img} data-imagezoom="true" class="img-responsive" alt=""/> </div>
 						</li>
 						
 					</ul>
@@ -21,7 +102,7 @@ export default function Product() {
                
 
         <div class="col-md-8 single-right">
-				<h3>The Best 3GB RAM Mobile Phone</h3>
+				<h3>{product.name}</h3>
 				<div class="rating1">
 					<span class="starRating">
 						<input id="rating5" type="radio" name="rating" value="5"/>
@@ -47,10 +128,10 @@ export default function Product() {
 			
 				
 				<div class="simpleCart_shelfItem">
-					<p><i class="item_price">$450</i></p>
+					<p><i class="item_price">₹{product.price}</i></p>
 					
 						  
-						<button type="submit" class="w3ls-cart">Add to cart</button>
+						<button onClick={()=>addCartApi(product)} type="submit" class="w3ls-cart">Add to cart</button>
 				
 				</div> 
 			</div>

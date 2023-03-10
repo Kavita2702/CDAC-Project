@@ -1,6 +1,8 @@
 package com.app.dairydelight.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,8 +11,9 @@ import javax.persistence.Table;
 @Table(name="products")
 public class Products {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
-	String name,price,added_on,category_id;
+	String name,price,added_on,category_id, img;
 	public long getId() {
 		return id;
 	}
@@ -41,5 +44,12 @@ public class Products {
 	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
 	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
 	
 }

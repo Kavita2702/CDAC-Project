@@ -17,11 +17,11 @@
 	top: 0px;
 	left: 0px;
 	position: absolute;
-	-webkit-animation: showMe 3s linear infinite 0s forwards;
+	/* -webkit-animation: showMe 3s linear infinite 0s forwards;
 	-moz-animation: showMe 3s linear infinite 0s forwards;
 	-o-animation: showMe 3s linear infinite 0s forwards;
 	-ms-animation: showMe 3s linear infinite 0s forwards;
-	animation: showMe 3s linear infinite 0s forwards;
+	animation: showMe 3s linear infinite 0s forwards; */
 	-webkit-animation-play-state: paused;
 	-moz-animation-play-state: paused;
 	-o-animation-play-state: paused;

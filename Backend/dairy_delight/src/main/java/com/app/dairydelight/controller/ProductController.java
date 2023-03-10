@@ -39,6 +39,20 @@ public class ProductController {
 		return ProductServices.getProductsByCategory(category_id);
 	}
 	
+	@GetMapping("/getProductsById/{id}")
+	public Products getProductsById(@PathVariable("id") String id){
+		try {
+			return ProductServices.getProductsById(Long.parseLong(id));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 	
 	@GetMapping( value = "/getimage/{img_name}",produces = MediaType.IMAGE_JPEG_VALUE)

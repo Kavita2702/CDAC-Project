@@ -1947,7 +1947,7 @@ pre code {
     width: 66.66666667%;
   }
   .col-md-7 {
-    width: 58.33333333%;
+    width: auto;
   }
   .col-md-6 {
     width: 50%;
@@ -3924,6 +3924,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li {
   float: left;
   margin-bottom: -1px;
+  font-size: larger;
 }
 .nav-tabs > li > a {
   margin-right: 2px;
