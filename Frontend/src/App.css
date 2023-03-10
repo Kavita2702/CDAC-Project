@@ -48,9 +48,10 @@
 }
 #w3lssbmincart.active{
   display: block;
-  background: #fff;
+  background: #FA1;
   padding: 10px;
   border: 1px solid #000;
+  z-index: 12;
 }
 .cart .cart_count{
   position: absolute;

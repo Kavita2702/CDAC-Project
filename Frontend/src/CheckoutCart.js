@@ -34,6 +34,32 @@ export default function CheckoutCart() {
 		)
 
 	}
+
+	const dlt_item = (cartObj,e)=>{
+		// console.log(cartObj,e.target.value);
+		// cartObj.qty 
+		let price = cartObj.price*e.target.value;
+		let obj = {"cartId":cartObj.id}
+		httpPostwithToken("addtocart/removeProductFromCart",obj)
+		.then((res)=>{		
+			res.json() .then(data=>{
+				if(res.ok){
+					dispatch({
+						"type":"add_cart",
+						"data":data
+					})
+					alert("Successfully Removed From Cart..")
+				}else{
+					alert(data.message)
+				}
+			})     
+		}).catch(function(res){
+			console.log("Error ",res);
+			//alert(error.message);
+		}
+		)
+	}
+
 	const checkout_order = ()=>{
 		// console.log(cartObj,e.target.value);
 		// cartObj.qty 
@@ -80,7 +106,7 @@ export default function CheckoutCart() {
 				   </select>
 				   </div>         
 				   <div className="sbmincart-details-remove">          
-					   <button type="button" className="sbmincart-remove" data-sbmincart-idx="0">×</button>     
+					   <button type="button" onClick={(e)=>dlt_item(cartObj,e)} className="sbmincart-remove" data-sbmincart-idx="0">×</button>     
 				   </div>        
 				   <div className="sbmincart-details-price">           
 					 <span className="sbmincart-price">{cartObj.price}</span>       

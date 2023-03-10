@@ -19,6 +19,7 @@ public class User {
 	address,
 	is_email_verified,
 	mobile;
+	
 	public long getId() {
 		return id;
 	}

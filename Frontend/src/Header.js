@@ -1,10 +1,11 @@
 
-import { useState } from 'react';
+import React, { useState, Component } from 'react';
 import './App.css';
 import Menu from './Menu';
 import {httpPost,httpPostwithToken} from './HttpConfig';
 import {CartContextValue} from './ContextProvider';
 import { Link } from 'react-router-dom';
+
 export default function Header() {
     const[mobile,setMobile] = useState('');
 	const[password,setPassword] = useState('');
@@ -34,6 +35,7 @@ export default function Header() {
 			alert("Password and Repassword should be same");
 			return;
 		}
+
 		let jsonOBj ={ 
 				"name":name,
 				"mobile":mobile,
@@ -63,6 +65,33 @@ export default function Header() {
 		}
 		)
     }
+
+	const dlt_item = (cartObj,e)=>{
+		// console.log(cartObj,e.target.value);
+		// cartObj.qty 
+		let price = cartObj.price*e.target.value;
+		let obj = {"cartId":cartObj.id}
+		httpPostwithToken("addtocart/removeProductFromCart",obj)
+		.then((res)=>{		
+			res.json() .then(data=>{
+				if(res.ok){
+					dispatch({
+						"type":"add_cart",
+						"data":data
+					})
+					alert("Successfully Removed From Cart..")
+				}else{
+					alert(data.message)
+				}
+			})     
+		}).catch(function(res){
+			console.log("Error ",res);
+			//alert(error.message);
+		}
+		)
+	}
+
+
     const showCartList=()=>{
         
 	}
@@ -118,6 +147,10 @@ export default function Header() {
 					</form>
 				</div>
 			</div>
+			
+			
+
+
 			<div className="cart cart box_1"> 
 					<button onClick={()=>setShowCartPopup(true)} className="w3view-cart" type="submit" name="submit" value="">
                         <i className="fa fa-cart-arrow-down" aria-hidden="true"></i>
@@ -145,7 +178,7 @@ export default function Header() {
 				   	<span  className="sbmincart-quantity">{cartObj.qty}</span>
 				   </div>         
 				   <div className="sbmincart-details-remove">          
-					   <button type="button" className="sbmincart-remove" data-sbmincart-idx="0">×</button>     
+					   <button type="button" onClick={(e)=>dlt_item(cartObj,e)} className="sbmincart-remove" data-sbmincart-idx="0">×</button>     
 				   </div>        
 				   <div className="sbmincart-details-price">           
 					 <span className="sbmincart-price">{cartObj.price}</span>       
