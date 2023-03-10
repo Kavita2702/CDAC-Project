@@ -284,16 +284,6 @@ export default function Header() {
 				
 			</div>
 			 
-			<div className="modal-content">
-			
-				<div className="modal-header">
-					<button onClick={()=>setsignin_up_model('')} type="button" className="close" data-dismiss="modal" aria-hidden="true">
-						&times;</button>
-					
-				</div>
-				
-			</div>
-			 
 			 
 		</div>
 		
