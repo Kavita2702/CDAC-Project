@@ -1,6 +1,6 @@
 package com.app.dairydelight.service.UserServices.impl;
 
-import java.util.HashMap;
+import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,16 +27,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User signUpUser(HashMap<String, String> signupRequest) throws Exception {
+	public User signUpUser(User transUser) throws Exception {
 		try {
-			if(userRepo.findByMobile(signupRequest.get("mobile")).isPresent()) {
+			if(userRepo.findByMobile(transUser.getMobile()).isPresent()) {
 				throw new Exception("User is already registered with Mobile No.");
 			}
 			User user = new User();
-			user.setName(signupRequest.get("name"));
-			user.setEmail(signupRequest.get("email"));
-			user.setMobile(signupRequest.get("mobile"));
-			user.setPassword(signupRequest.get("password"));
+			user.setName(transUser.getName());
+			user.setEmail(transUser.getEmail());
+			user.setMobile(transUser.getMobile());
+			user.setPassword(transUser.getPassword());
+			user.setAddress(transUser.getAddress());
+			user.setIs_email_verified(transUser.getIs_email_verified());
+			user.setCreated_at(new Timestamp(System.currentTimeMillis()).toString());
 			userRepo.save(user);
 			return user;
 		}catch(Exception e) {

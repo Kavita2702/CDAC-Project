@@ -1,7 +1,5 @@
 package com.app.dairydelight.service.UserServices;
 
-import java.util.HashMap;
-
 import org.springframework.stereotype.Service;
 
 import com.app.dairydelight.model.User;
@@ -10,6 +8,6 @@ import com.app.dairydelight.model.User;
 public interface UserService {
 	User findByMobile(String mobile) throws Exception;
 	User getUserDetailById(long userId) throws Exception;
-	User signUpUser(HashMap<String,String> signupRequest) throws Exception;
+	User signUpUser(User transUser) throws Exception;
 	
 }

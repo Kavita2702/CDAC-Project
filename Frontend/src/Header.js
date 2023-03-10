@@ -11,6 +11,7 @@ export default function Header() {
 	const[password,setPassword] = useState('');
     const[respassword,setRePassword] = useState('');
     const[email,setEmail] = useState('');
+	const[address,setAddress] = useState('');
     const[showCartPopup,setShowCartPopup] = useState(false);
 	const[name,setName] = useState('');
 	const [sign_in_up_model,setsignin_up_model] = useState('');
@@ -31,8 +32,11 @@ export default function Header() {
 		}else if(respassword == ""){
 			alert("Repassword should not be empty");
 			return;
-		}else if(password == respassword){
+		}else if(password != respassword){
 			alert("Password and Repassword should be same");
+			return;
+		}else if(address == ""){
+			alert("Address should not be empty");
 			return;
 		}
 
@@ -40,7 +44,8 @@ export default function Header() {
 				"name":name,
 				"mobile":mobile,
 				"password":password ,
-				"email":email
+				"email":email,
+				"address":address
 			}
 				
 		httpPost("signup/user",jsonOBj)
@@ -53,6 +58,7 @@ export default function Header() {
 				setRePassword("");
 				setEmail("")
 				setName('');
+				setAddress('');
 				setsignin_up_model('sign-in')//hide the sign up model.
 			}else{
 				alert(res['message']);	
@@ -114,16 +120,19 @@ export default function Header() {
 			if(res['token'] != null){
 				localStorage.setItem("token",res['token']);//token
 				localStorage.setItem("user_id",res['user_profile_details']['user_id']);//user_id
+				localStorage.setItem("user_name",res['user_profile_details']['name']);//user_id
+				localStorage.setItem("isLoggedIn",true);//user_id
 				setsignin_up_model('')//hide the sign up model.
+				
 				//getCategory();
 			}else{
-				alert(res['message']);	
+				//alert(res['message']);	
 			}
 			
 			//console.log(res);
 			
 		},error=>{
-			alert(error.message);
+			//alert(error.message);
 		}
 		)
 	}
@@ -136,6 +145,7 @@ export default function Header() {
 			</div>
 			<div className="w3l_logo">
 				<h1><a href="#">&nbsp;  Dairy  Delight<span>Fresh. Healthy. Nutritious</span></a></h1>
+				
 			</div>
 			{/* <div className="search">
 				<input className="search_box" type="checkbox" id="search_box"/>
@@ -149,8 +159,6 @@ export default function Header() {
 			</div> */}
 			
 			
-
-
 			<div className="cart cart box_1"> 
 					<button onClick={()=>setShowCartPopup(true)} className="w3view-cart" type="submit" name="submit" value="">
                         <i className="fa fa-cart-arrow-down" aria-hidden="true"></i>
@@ -199,7 +207,9 @@ export default function Header() {
 
     <div className={"modal "+ sign_in_up_model} id="myModal88" >
 		<div className="modal-dialog modal-lg">
+		
 			<div className="modal-content">
+			
 				<div className="modal-header">
 					<button onClick={()=>setsignin_up_model('')} type="button" className="close" data-dismiss="modal" aria-hidden="true">
 						&times;</button>
@@ -207,6 +217,7 @@ export default function Header() {
 						{(sign_in_up_model == 'sign-in')?"Sign In":"Register"}
 					</h4>
 				</div>
+				
 				<div className="modal-body  modal-body-sub">
 					<div className="row">
 						<div className="col-md-8 modal_body_left modal_body_left1">
@@ -238,6 +249,7 @@ export default function Header() {
 													<input onChange={(e)=>setName(e.target.value)} placeholder="Enter Name" name="Name" type="text" required=""/>
 													<input onChange={(e)=>setEmail(e.target.value)} placeholder="Enter Email Address" name="Email" type="email" required=""/>	
 													<input onChange={(e)=>setMobile(e.target.value)} placeholder="Enter Mobile" name="mobile" type="text" required=""/>	
+													<input onChange={(e)=>setAddress(e.target.value)} placeholder="Enter Address" name="Address" type="text" required=""/>
 													<input onChange={(e)=>setPassword(e.target.value)} placeholder="Enter Password" name="Password" type="password" required=""/>	
 													<input onChange={(e)=>setRePassword(e.target.value)} placeholder="Enter Confirm Password" name="Password" type="password" required=""/>
 													<div className="sign-up">
@@ -269,8 +281,22 @@ export default function Header() {
 						</div> */}
 					</div>
 				</div>
+				
 			</div>
+			 
+			<div className="modal-content">
+			
+				<div className="modal-header">
+					<button onClick={()=>setsignin_up_model('')} type="button" className="close" data-dismiss="modal" aria-hidden="true">
+						&times;</button>
+					
+				</div>
+				
+			</div>
+			 
+			 
 		</div>
+		
 	</div>
            </>
     )

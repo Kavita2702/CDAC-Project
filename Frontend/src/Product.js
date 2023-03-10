@@ -12,7 +12,10 @@ export default function Product() {
 	const params = useParams();
 	const [product,setProduct] = useState([]);
 	const [cartData,dispatch] = CartContextValue()
-	
+	useEffect(()=>{
+		//TODO check user login
+		localStorage.getItem("isLoggedIn")? getCartApi():test()
+	},[])
 	const getProductsById = (id)=>{
 		
 		httpGet("product/getProductsById/",id)
@@ -39,6 +42,8 @@ export default function Product() {
 	useEffect(()=>{
 		getProductsById(params.id);
 	},[])
+
+	const test = ()=>{}
 
 	const getCartApi = ()=>{		
 		httpPostwithToken("addtocart/getCartsByUserId",{})

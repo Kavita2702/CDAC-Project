@@ -16,8 +16,12 @@ function Home() {
 	useEffect(()=>{
 		//TODO check user login
 		getCategory();
-		getCartApi()
+		localStorage.getItem("isLoggedIn")? getCartApi():test()
 	},[])
+
+	
+	const test = ()=>{}
+
 	// const signUpApi=()=>{
 	// 	if(mobile == ""){
 	// 		alert("Mobile should not be empty");
