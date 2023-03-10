@@ -135,7 +135,7 @@ export default function Header() {
 				<a href="javascript:void(0)" onClick={()=>setsignin_up_model('sign-in')} data-toggle="modal" data-target="#myModal88"><span className="glyphicon glyphicon-user" aria-hidden="true"></span></a>
 			</div>
 			<div className="w3l_logo">
-				<h1><a href="#">Dairy Delight<span>Your stores. Your place.</span></a></h1>
+				<h1><a href="#">&nbsp;  Dairy  Delight<span>Fresh. Healthy. Nutritious</span></a></h1>
 			</div>
 			{/* <div className="search">
 				<input className="search_box" type="checkbox" id="search_box"/>
